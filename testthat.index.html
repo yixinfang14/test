@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Hello from GitHub 🎉</title>
+  <style>
+    :root {
+      --bg1: #f5f7ff;
+      --bg2: #eef9ff;
+      --ink: #111827;
+      --muted: #6b7280;
+      --accent: #3b82f6;
+      --ring: rgba(59,130,246,.35);
+    }
+    * { box-sizing: border-box; }
+    html, body { height: 100%; margin: 0; }
+    body {
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
+      background:
+        radial-gradient(1200px 600px at 100% -50%, #c7d2fe33, transparent 60%),
+        radial-gradient(900px 500px at -20% 120%, #bbf7d033, transparent 60%),
+        linear-gradient(180deg, var(--bg1), var(--bg2));
+      color: var(--ink);
+      display: grid;
+      place-items: center;
+      padding: 24px;
+    }
+    .card {
+      width: min(820px, 92vw);
+      background: white;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(17, 24, 39, 0.08),
+                  0 2px 8px rgba(17, 24, 39, 0.06);
+      padding: 28px;
+      border: 1px solid #e5e7eb;
+    }
+    h1 {
+      margin: 0 0 8px;
+      font-size: clamp(28px, 4vw, 40px);
+      line-height: 1.1;
+    }
+    p.lead {
+      margin: 0 0 18px;
+      font-size: clamp(16px, 2.2vw, 18px);
+      color: var(--muted);
+    }
+    .row {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+    @media (min-width: 720px) {
+      .row { grid-template-columns: 1.2fr .8fr; }
+    }
+    .panel {
+      background: #f8fafc;
+      border: 1px solid #e5e7eb;
+      border-radius: 16px;
+      padding: 16px;
+    }
+    .clock {
+      font-variant-numeric: tabular-nums;
+      font-size: clamp(22px, 3.6vw, 28px);
+      letter-spacing: .5px;
+    }
+    .btn {
+      appearance: none;
+      border: 0;
+      border-radius: 999px;
+      padding: 12px 18px;
+      font-weight: 600;
+      background: var(--accent);
+      color: white;
+      cursor: pointer;
+      transition: transform .04s ease, box-shadow .2s ease;
+      box-shadow: 0 6px 16px var(--ring);
+    }
+    .btn:active { transform: translateY(1px) scale(.99); }
+    .list { margin: 12px 0 0 18px; }
+    .badge {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: #eff6ff;
+      color: #1d4ed8;
+      border: 1px solid #dbeafe;
+      font-weight: 600;
+      font-size: 12px;
+    }
+    footer {
+      margin-top: 14px;
+      font-size: 13px;
+      color: var(--muted);
+    }
+  </style>
+</head>
+<body>
+  <main class="card" role="main">
+    <h1>Hi, GitHub 👋</h1>
+    <p class="lead">
+      This is a tiny one-file site with zero dependencies. You should see this even in basic previews.
+    </p>
+
+    <div class="row">
+      <section class="panel" aria-labelledby="live-clock">
+        <div class="badge">Live Demo</div>
+        <h2 id="live-clock">A live clock</h2>
+        <p class="clock" id="clock">--:--:--</p>
+        <button class="btn" id="greetBtn" type="button">Click me</button>
+        <p id="greetMsg" aria-live="polite"></p>
+      </section>
+
+      <section class="panel" aria-labelledby="what-is-this">
+        <h2 id="what-is-this">What is this?</h2>
+        <ul class="list">
+          <li>Single HTML file (works on GitHub Pages, local, or any static host).</li>
+          <li>No external fonts, CSS, or JS.</li>
+          <li>Accessible, responsive, and lightweight.</li>
+        </ul>
+        <p>
+          Learn more: <a href="https://pages.github.com/" target="_blank" rel="noopener">GitHub Pages</a>
+        </p>
+      </section>
+    </div>
+
+    <footer>
+      Tip: To preview on GitHub, enable <strong>Settings → Pages</strong> and choose your branch (usually <em>main</em>) and folder <em>/root</em>. The site will deploy as <code>https://&lt;your-user&gt;.github.io/&lt;repo&gt;/</code>.
+    </footer>
+  </main>
+
+  <script>
+    // Clock
+    const clockEl = document.getElementById('clock');
+    const tick = () => {
+      const now = new Date();
+      const pad = n => String(n).padStart(2, '0');
+      const t = `${pad(now.getHours())}:${pad(now.getMinutes())}:${pad(now.getSeconds())}`;
+      clockEl.textContent = t;
+    };
+    tick(); setInterval(tick, 1000);
+
+    // Button
+    const btn = document.getElementById('greetBtn');
+    const out = document.getElementById('greetMsg');
+    btn.addEventListener('click', () => {
+      const messages = [
+        "Nice! You clicked the button.",
+        "Hello from your GitHub site 🎈",
+        "Works! Try editing this text and commit.",
+        "Static sites are fun and fast ⚡"
+      ];
+      out.textContent = messages[Math.floor(Math.random() * messages.length)];
+    });
+  </script>
+</body>
+</html>
+
